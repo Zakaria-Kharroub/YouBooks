@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 // Route::get('/', [\App\Http\Controllers\BookController::class, 'index']);
 Route::resource('books', \App\Http\Controllers\BookController::class);
+Route::resource('reservations', \App\Http\Controllers\ReservationController::class);
+
 Route::get('/login', function () {
     return view('auth/login');
 });
@@ -26,6 +28,3 @@ Route::get('/register', function () {
 
 
 
-// Route::get('/ajouter', function () {
-//     return view('ajouter');
-// });

@@ -13,7 +13,7 @@ class BookController extends Controller
     public function index()
     {
         //
-        $books=Book::all();
+        $books = Book::all();
         return view('welcome',compact('books'));
     }
 
@@ -23,7 +23,7 @@ class BookController extends Controller
     public function create()
     {
         //
-        $books=Book::all();
+        $books= Book::all();
         return view('ajouter',compact('books'));
 
     }
@@ -34,11 +34,11 @@ class BookController extends Controller
     public function store(Request $request)
     {
         
-        $book=new Book();
-        $book->title=$request->input('title');
-        $book->author=$request->input('author');
-        $book->description=$request->input('description');
-        $book->save();
+         $book = new Book();
+        $book ->title=$request->input('title');
+         $book->author=$request->input('author');
+         $book ->description=$request->input('description');
+        $book ->save();
         return redirect()->route('books.create');
 
     }
@@ -49,14 +49,14 @@ class BookController extends Controller
     public function show(string $id)
     {
         //
-        $book = Book::find($id);
-        return view('detail', compact('book'));
+        $book =Book::find($id);
+        return view('detail',compact('book'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit( $id)
     {
         //
         $book = Book::find($id);
@@ -67,14 +67,14 @@ class BookController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         //
-        $book=Book::find($id);
-        $book->title=$request->input('title');
-        $book->author=$request->input('author');
+        $book= Book::find($id);
+        $book ->title=$request->input('title');
+        $book ->author=$request->input('author');
         $book->description=$request->input('description');
-        $book->save();
+        $book ->save();
         return redirect()->route('books.create');
 
     }
@@ -82,11 +82,11 @@ class BookController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
 
-        $book=Book::find($id);
-        $book->delete();
+        $book= Book::find($id);
+        $book -> delete();
         return redirect()->route('books.index');
         
 

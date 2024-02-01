@@ -44,11 +44,13 @@
 
                                 <div class="d-flex">
                                     <a href="{{ route('books.show', $book->id) }}" class="btn btn-danger text-light ">voir <i class="fa-solid fa-eye"></i></a>
+                                    <a href="{{ route('reservations.create', $book->id) }}" class="btn btn-primary text-light ms-1">Réserver <i class="fa-solid fa-calendar-check"></i></a>
                                     <form action="{{route('books.destroy',$book->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger ms-1"><i class="fa-solid fa-trash"></i></button>
                                     </form>
+                                    
                                 </div>
                                 
                                 
