@@ -25,6 +25,7 @@ class BookController extends Controller
         //
         $books=Book::all();
         return view('ajouter',compact('books'));
+        
     }
 
     /**
@@ -71,6 +72,11 @@ class BookController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
+        $book=Book::find($id);
+        $book->delete();
+        return redirect()->route('books.index');
+        
+
     }
 }
