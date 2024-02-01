@@ -25,7 +25,7 @@ class BookController extends Controller
         //
         $books=Book::all();
         return view('ajouter',compact('books'));
-        
+
     }
 
     /**
