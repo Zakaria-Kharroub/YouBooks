@@ -49,6 +49,8 @@ class BookController extends Controller
     public function show(string $id)
     {
         //
+        $book = Book::find($id);
+        return view('detail', compact('book'));
     }
 
     /**
@@ -57,6 +59,9 @@ class BookController extends Controller
     public function edit(string $id)
     {
         //
+        $book = Book::find($id);
+        return view('edit', compact('book'));
+
     }
 
     /**
@@ -65,6 +70,13 @@ class BookController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $book=Book::find($id);
+        $book->title=$request->input('title');
+        $book->author=$request->input('author');
+        $book->description=$request->input('description');
+        $book->save();
+        return redirect()->route('books.create');
+
     }
 
     /**

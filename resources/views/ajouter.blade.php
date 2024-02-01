@@ -65,12 +65,7 @@
                 <td>{{$book->author}}</td>
                 <td>{{$book->description}}</td>
                 <td class="d-flex">
-                    <a href="{{route('books.edit',$book->id)}}" class="btn btn-primary">edit</a>
-                    <form action="{{route('books.destroy',$book->id)}}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-danger">delete</button>
-                    </form>
+                    <a href="{{route('books.edit', $book->id)}}" class="btn btn-primary">edit</a>
                 </td>
               </tr>
               

@@ -43,7 +43,7 @@
                                 <p class="card-text text-justify">{{$book->description}}</p>
 
                                 <div class="d-flex">
-                                    <a href="" class="btn btn-danger text-light ">voir <i class="fa-solid fa-eye"></i></a>
+                                    <a href="{{ route('books.show', $book->id) }}" class="btn btn-danger text-light ">voir <i class="fa-solid fa-eye"></i></a>
                                     <form action="{{route('books.destroy',$book->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
