@@ -9,14 +9,11 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    
     public function up(): void
     {
-        Schema::create('books', function (Blueprint $table) {
-            $table->id()-> autoIncrement();
-            $table->string('title');
-            $table->string('author');
-            $table->string('description');
+        Schema::create('roles', function (Blueprint $table) {
+            $table->id();
+            $table->string('name_role');
             $table->timestamps();
         });
     }
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('books');
+        Schema::dropIfExists('roles');
     }
 };

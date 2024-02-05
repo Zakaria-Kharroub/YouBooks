@@ -9,10 +9,29 @@
 @include('layouts.navbar')
         
         
-        <h1 class='text-center'>
+        <h1 class='text-center mt-5'>
             login
-            <button class="btn btn-danger">login</button>
         </h1>
+
+        <div class="container w-50">
+
+            <form action="loginUser" method="post">
+                @csrf
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                
+                <button type="submit" name="submit" class="btn btn-danger w-100">login</button>
+    
+            </form>
+            
+
+        </div>
 
 
 
