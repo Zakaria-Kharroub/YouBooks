@@ -44,13 +44,58 @@
 
                                 <div class="d-flex">
                                     <a href="{{ route('books.show', $book->id) }}" class="btn btn-danger text-light ">voir <i class="fa-solid fa-eye"></i></a>
-                                    <a href="" class="btn btn-primary text-light ms-1">reserver <i class="fa-solid fa-calendar-check"></i></a>
+
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{$book->id}}" value="{{$book->id}}">
+                                        reserver <i class="fa-solid fa-cart-plus"></i>
+                                    </button>
+                                        
+
                                     <form action="{{route('books.destroy',$book->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger ms-1"><i class="fa-solid fa-trash"></i></button>
                                     </form>
                                     
+                                </div>
+
+
+
+
+                                <!-- Modal reservation --> 
+                                <div class="modal fade" id="exampleModal{{$book->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel">reserver livre :  <br>
+                                            <span class="text-danger"> {{$book->title}}  </span>
+                                            <span></span>
+                                          
+                                          </h5>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{{route('reservation',$book->id)}}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="book_id" value="{{$book->id}}">
+                                                <input type="hidden" name="user_id" value="2">
+                                
+                                                <div class="mb-3">
+                                                    <label for="date_debut" class="form-label">Date de début</label>
+                                                    <input type="date" class="form-control" id="date_debut" name="date_debut" value="{{date('Y-m-d')}}">
+                                                </div>
+                                
+                                                <div class="mb-3">
+                                                    <label for="date_fin" class="form-label">Date de fin</label>
+                                                    <input type="date" class="form-control" id="date_fin" name="date_fin">
+                                                </div>
+                                
+                                                <div class="modal-footer">
+                                                    <button type="submit" name="submit" class="btn btn-primary">reserver</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                      </div>
+                                    </div>
                                 </div>
                                 
                                 

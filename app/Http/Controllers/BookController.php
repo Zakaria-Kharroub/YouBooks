@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Models\Reservation;
 
 class BookController extends Controller
 {
@@ -70,10 +71,10 @@ class BookController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $book= Book::find($id);
-        $book ->title=$request->input('title');
+       $book= Book::find($id);
+         $book ->title=$request->input('title');
         $book ->author=$request->input('author');
-        $book->description=$request->input('description');
+         $book->description=$request->input('description');
         $book ->save();
         return redirect()->route('books.create');
 
@@ -91,4 +92,6 @@ class BookController extends Controller
         
 
     }
+
+
 }

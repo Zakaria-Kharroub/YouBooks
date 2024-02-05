@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Reservation;
 
 use Illuminate\Http\Request;
 
@@ -12,6 +13,9 @@ class ReservationController extends Controller
     public function index()
     {
         //
+        $book= Reservation::all();
+        return view('welcome',compact('book'));
+        
     }
 
     /**
@@ -29,6 +33,22 @@ class ReservationController extends Controller
     {
         //
     }
+
+
+
+    public function reservation(Request $request)
+    {
+        
+        $reservation = new Reservation();
+         $reservation->book_id = $request->input('book_id');
+        $reservation->user_id = $request->input('user_id');
+         $reservation->date_debut = $request->input('date_debut');
+        $reservation->date_fin = $request->input('date_fin');
+        $reservation->save();
+        return redirect()->route('books.index');
+
+    }
+
 
     /**
      * Display the specified resource.

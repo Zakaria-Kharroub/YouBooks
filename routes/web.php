@@ -26,5 +26,9 @@ Route::get('/register', function () {
 });
 
 
+Route::post('/reservation', [\App\Http\Controllers\ReservationController::class, 'reservation'])->name('reservation');
+
+
+
 
 
