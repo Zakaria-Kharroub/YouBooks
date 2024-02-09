@@ -7,6 +7,12 @@
 <body class="antialiased">
 
 @include('layouts.navbar')
+
+
+{{-- <h1>bonjour {{session('name')}}</h1> --}}
+
+
+
         
         
         {{-- <h1 class='text-center'>
@@ -45,16 +51,17 @@
                                 <div class="d-flex">
                                     <a href="{{ route('books.show', $book->id) }}" class="btn btn-danger text-light ">voir <i class="fa-solid fa-eye"></i></a>
 
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{$book->id}}" value="{{$book->id}}">
+                                    @auth
+                                    <button type="button" class="btn btn-primary ms-1" data-bs-toggle="modal" data-bs-target="#exampleModal{{$book->id}}" value="{{$book->id}}">
                                         reserver <i class="fa-solid fa-cart-plus"></i>
                                     </button>
+                                    @else   
+                                    <a href="{{route('login')}}" class="btn btn-primary ms-1 text-light">reserver <i class="fa-solid fa-cart-plus"></i></a>
+                                        
+                                    @endauth
                                         
 
-                                    <form action="{{route('books.destroy',$book->id)}}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-danger ms-1"><i class="fa-solid fa-trash"></i></button>
-                                    </form>
+                                
                                     
                                 </div>
 
@@ -77,16 +84,16 @@
                                             <form action="{{route('reservation',$book->id)}}" method="POST">
                                                 @csrf
                                                 <input type="hidden" name="book_id" value="{{$book->id}}">
-                                                <input type="hidden" name="user_id" value="2">
+                                                <input type="hidden" name="user_id" value="{{session('id')}}">
                                 
                                                 <div class="mb-3">
                                                     <label for="date_debut" class="form-label">Date de début</label>
-                                                    <input type="date" class="form-control" id="date_debut" name="date_debut" value="{{date('Y-m-d')}}">
+                                                    <input type="date" class="form-control" id="date_debut" name="date_debut" value="{{date('Y-m-d')}}" readonly>
                                                 </div>
                                 
                                                 <div class="mb-3">
                                                     <label for="date_fin" class="form-label">Date de fin</label>
-                                                    <input type="date" class="form-control" id="date_fin" name="date_fin">
+                                                    <input type="date" class="form-control" id="date_fin" name="date_fin" min="{{date('Y-m-d')}}" required>
                                                 </div>
                                 
                                                 <div class="modal-footer">
@@ -124,7 +131,9 @@
         <style>
       
         body {
-            background-color: #FFFFFF;
+            background-image: url("{{URL('images/bg-home.png')}}");
+            background-attachment: fixed;
+            background-size: cover;
         }
         .card {
             border-radius:7px;

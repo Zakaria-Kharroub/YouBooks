@@ -18,6 +18,16 @@ class ReservationController extends Controller
         
     }
 
+    public function myReservation()
+    {
+       $user = auth()->user();
+    //    $reservations = Reservation::where('user_id',$user->id)->get();
+       $reservations = Reservation::with('book')->where('user_id', $user->id)->get();
+
+
+         return view('myReservation',compact('reservations'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -47,6 +57,13 @@ class ReservationController extends Controller
         $reservation->save();
         return redirect()->route('books.index');
 
+    }
+
+    public function retourner($id)
+    {
+        $reservation = Reservation::find($id);
+         $reservation->delete();
+        return redirect()->route('myReservation');
     }
 
 

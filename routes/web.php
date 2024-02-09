@@ -27,6 +27,8 @@ Route::resource('reservations',\App\Http\Controllers\ReservationController::clas
 
 
 Route::post('/reservation', [\App\Http\Controllers\ReservationController::class,'reservation'])->name('reservation');
+Route::get('/myReservation', [\App\Http\Controllers\ReservationController::class,'myReservation'])->name('myReservation');
+Route::delete('/retourner/{id}', [\App\Http\Controllers\ReservationController::class,'retourner'])->name('retourner');
 
 // Route::resource('auth', \App\Http\Controllers\AuthController::class);
 
@@ -34,7 +36,8 @@ Route::post('/reservation', [\App\Http\Controllers\ReservationController::class,
 
 // routes authentfication
 Route::post('/store', [\App\Http\Controllers\AuthController::class,'store'])->name('store');
-Route::post('/loginUser', [\App\Http\Controllers\AuthController::class,'loginUser'])->name('loginUser');
+Route::post('/loginUser',[\App\Http\Controllers\AuthController::class,'loginUser'])->name('loginUser');
+Route::get('/logOut', [\App\Http\Controllers\AuthController::class,'logOut'])->name('logOut');
 
 Route::get('/login', [\App\Http\Controllers\AuthController::class, 'login'])->name('login');
 Route::get('/register', [\App\Http\Controllers\AuthController::class,'register'])->name('register');

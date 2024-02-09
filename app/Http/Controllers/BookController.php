@@ -24,7 +24,7 @@ class BookController extends Controller
     public function create()
     {
         //
-        $books= Book::all();
+        $books= Book::paginate(5);
         return view('ajouter',compact('books'));
 
     }
@@ -88,7 +88,7 @@ class BookController extends Controller
 
         $book= Book::find($id);
         $book -> delete();
-        return redirect()->route('books.index');
+        return redirect()->route('books.create');
         
 
     }

@@ -44,7 +44,7 @@
               </form>
     
         </div>
-
+        <div class="container">{{$books->links()}}</div>
         <table class="table bg-light table-striped table-hover  container">
             <thead class="bg">
               <tr>
@@ -65,13 +65,26 @@
                 <td>{{$book->author}}</td>
                 <td>{{$book->description}}</td>
                 <td class="d-flex">
-                    <a href="{{route('books.edit', $book->id)}}" class="btn btn-primary">edit</a>
+                    <a href="{{route('books.edit', $book->id)}}" class="btn btn-primary mt-3">edit</a>
+
+                    <form action="{{route('books.destroy',$book->id)}}" method="POST" class="mt-3">
+                      @csrf
+                      @method('DELETE')
+                      <button class="btn btn-danger ms-1"><i class="fa-solid fa-trash"></i></button>
+                    </form>
                 </td>
               </tr>
               
           @endforeach
+         
         </tbody>
+        
         </table>
+        
+          <span class="text-center">
+            
+          </span>
+        
 
 
 
@@ -124,9 +137,9 @@
 
         <style>
             body{
-                background-image: url("{{URL('images/library-bg.jpg')}}");
-                background-size: cover;
-                background-repeat: no-repeat;
+              background-image: url("{{URL('images/bg-home.png')}}");
+              background-attachment: fixed;
+            background-size: cover;
 
             }
         </style>
