@@ -16,8 +16,8 @@ class DashController extends Controller
     public function index()
     {
         //
-        // $users = User::where('role_id', 1)->with('role')->get();
-        $users = User::all();
+        $users = User::where('role_id', 1)->with('role')->get();
+        // $users = User::all();
 
         return view('dashboard',compact('users'));
     }

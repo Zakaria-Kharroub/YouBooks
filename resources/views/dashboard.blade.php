@@ -13,21 +13,21 @@
 
     <div class="container mt-3">
         <h1 class="text-center">liste des utlisateur</h1>
-        <table class="table">
-            <thead>
+        <table class="table container">
+            <thead class="bg-dark text-light">
             <tr>
-                <th>id</th>
+                {{-- <th>id</th> --}}
                 <th>name</th>
                 <th>email</th>
                 <th>role_id</th>
-                <td>update role</td>
+                <td>change role</td>
             </tr>
             </thead>
             
             <tbody>
             @foreach ($users as $user)
             <tr>
-                <td>{{$user->id}}</td>
+                {{-- <td>{{$user->id}}</td> --}}
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
                 <td>{{ $user->role->name_role}}</td>
@@ -35,11 +35,11 @@
                     <form action="{{route('updateRole',$user->id)}}" method="POST" class="w-50 d-flex">
                         @csrf
                         @method('PUT')
-                        <select name="role_id" id="role_id" class="form-select">
+                        <select name="role_id" id="role_id" class="form-select w-75">
                             <option value="2">bibliothecaire</option>
                             <option value="1">user</option>
                         </select>
-                        <button class="btn btn-primary">update</button>
+                        <button class="btn btn-primary ms-2"><i class="fa-solid fa-check"></i></button>
                     </form>
             </tr>
             @endforeach
