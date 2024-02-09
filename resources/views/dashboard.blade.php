@@ -37,7 +37,7 @@
                         @method('PUT')
                         <select name="role_id" id="role_id" class="form-select w-75">
                             <option value="2">bibliothecaire</option>
-                            <option value="1">user</option>
+                            <option value="1">etudiant</option>
                         </select>
                         <button class="btn btn-primary ms-2"><i class="fa-solid fa-check"></i></button>
                     </form>
