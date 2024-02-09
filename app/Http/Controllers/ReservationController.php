@@ -14,7 +14,7 @@ class ReservationController extends Controller
     {
         //
         $book= Reservation::all();
-        return view('welcome',compact('book'));
+        return view('dashboard',compact('book'));
         
     }
 

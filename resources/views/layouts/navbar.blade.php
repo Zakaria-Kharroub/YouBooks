@@ -10,15 +10,16 @@
 
                   @if (session('role_id') == 2)
                       <a href="{{route('books.create')}}" class="nav-item nav-link">ajouter</a>
+                      <a href="{{route('dashboard')}}" class="nav-item nav-link">dashoard</a>
 
                       <div class="btn-group">
                         <button type="button" class="btn nav-item nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                           <b> {{session('name')}}</b>
+                           <b class="text-danger"> {{session('name')}}</b>
                         </button>
                         <ul class="dropdown-menu">
                           
                           <li><a class="dropdown-item" href="#">profile</a></li>
-                          <li><a class="dropdown-item" href="{{route('myReservation')}}">mes reservations</a></li>
+                          <li><a class="dropdown-item" href="{{route('myReservation')}}" >mes reservations</a></li>
                           <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{{route('logOut')}}">logout</a></li>
                         </ul>
@@ -28,7 +29,7 @@
 
                      <div class="btn-group">
                         <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{session('name')}}
+                          <b class="text-danger"> {{session('name')}}</b>
                         </button>
                         <ul class="dropdown-menu">
                           

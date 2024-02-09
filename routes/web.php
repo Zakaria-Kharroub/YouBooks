@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 // Route::get('/', [\App\Http\Controllers\BookController::class, 'index']);
 Route::resource('books', \App\Http\Controllers\BookController::class);
+
 Route::resource('reservations',\App\Http\Controllers\ReservationController::class);
 
 // Route::get('/login', function () {
@@ -42,6 +43,13 @@ Route::get('/logOut', [\App\Http\Controllers\AuthController::class,'logOut'])->n
 Route::get('/login', [\App\Http\Controllers\AuthController::class, 'login'])->name('login');
 Route::get('/register', [\App\Http\Controllers\AuthController::class,'register'])->name('register');
 
+
+
+// dashboard
+// Route::get('/dashboard', [\App\Http\Controllers\UserController::class,'index'])->name('dashboard');
+// Route::resource('users', \App\Http\Controllers\UserController::class);
+Route::get('/dashboard', [\App\Http\Controllers\DashController::class,'index'])->name('dashboard');
+Route::put('/updateRole/{id}', [\App\Http\Controllers\DashController::class,'updateRole'])->name('updateRole');
 
 
 

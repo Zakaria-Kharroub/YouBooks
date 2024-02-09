@@ -18,7 +18,7 @@
             <table class="table">
                 <thead>
                     <tr class="bg-dark text-light">
-                        {{-- <th>id</th> --}}
+                        
                         <th>titre</th>
                         <th>date final</th>
                         <td>Les jours restants</td>
@@ -34,8 +34,11 @@
                         <td>{{ $reservation->book->title }}</td> 
                         <td>{{$reservation ->date_fin}}</td>
 
-                        
-                       <td>{{ \Carbon\Carbon::now()->diffInDays($reservation->date_fin) }}</td> 
+                        @if(\Carbon\Carbon::now()->diffInDays($reservation->date_fin) > 0)
+                          <td>{{ \Carbon\Carbon::now()->diffInDays($reservation->date_fin) }}</td> 
+                        @else
+                          <td>lyouma khassk trod lktab</td>
+                        @endif
                        
                         <td>
                             <form action="{{route('retourner',$reservation->id)}}" method="POST" >
