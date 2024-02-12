@@ -13,8 +13,11 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
-        $books = Book::all();
+        //pour affcher tous les books
+        // $books = Book::all();
+
+        // pour afficher just les books pas reserver
+         $books = Book::doesntHave('reservations')->get();
         return view('welcome',compact('books'));
     }
 
